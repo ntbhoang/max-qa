@@ -1,0 +1,2 @@
+1- When running using testng.xml file, the parallel option should match with the testng annotations, for example:
+  - in testng.xml if parallel="methods" then annotations should be @Before/AfterMethod

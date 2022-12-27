@@ -1,0 +1,5 @@
+1- Create a simple standalone report in Extent Reports.
+2- Integrating with framework
+3- Using ThreadLocal to avoid ThreadSafety issues with ExtentTest
+4- Creating customer logger for Extent reports
+5- Why we need listeners to setup and teardown reports?

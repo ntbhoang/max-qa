@@ -1,0 +1,3 @@
+- Since we implement the Driver class with public initDriver() method, it means that ppl can call this methods in many 
+  places which will open multiple drives/Chrome instances.
+- Solution, in the initDriver() we check if the driver is null? So only create new instance if it is null

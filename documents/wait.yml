@@ -1,0 +1,2 @@
+1- In case, you don't have choice to use Implicit or Explicit waits, must use the hardcode value, don't  use
+    Thread.sleep(), use- Uninterruptibles.sleepUninterruptible()

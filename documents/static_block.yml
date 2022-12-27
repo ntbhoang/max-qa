@@ -1,0 +1,2 @@
+1- Static block is eager init, it is executed before main method.
+   So, if we want to init values for certain prop, we can use static block

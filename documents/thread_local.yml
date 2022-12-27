@@ -1,0 +1,22 @@
+
+In Java, we have 2 memories - Stack and Heap, therefore:
+  - All local variables of primitive types (both the var and the value) in the Stack itself. (thread-safe)
+  - Ref local vars will be stored on the Heap memory.
+  - Static class vars are also stored in the HEAP memory -> Anything stored in the HEAP, multi-threads can come and get.
+    So, when you running multiple threads come in the same time to asking for accessing these static var. That cause trouble
+
+    1- Multi-threading
+      - One process can run multi-threads, these threads share the same code/data/files on Register/Stacks
+  
+    2- Multi-processing
+      - Each process has its own data/files/code
+
+ThreadLocal:
+  1- ThreadLocal helps create vars that can be read and written by the same thread.
+  2- Easiest way to safeguard static class variables.
+  3- Creating a Thread Local variable
+  4- Default value of a Thread Local variable
+  5- Get/Set/Remove methods
+  6- Initial ThreadLocal value (optional)
+  7- Inheritable ThreadLocal
+

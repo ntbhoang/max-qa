@@ -1,0 +1,15 @@
+1- Page Factory notions:
+  - Reduce verbosity
+  - Faster than use findElement
+  - Lazy evaluation
+
+2- Problems with PageFactory:
+  - StaleElementReferenceException
+  - NullPointerException
+  - Cannot use to produce dynamic elements
+
+
+3- For complicated web application:
+  - Image you used Cached elements, which complicated app, in case after fire an event, this element is reload with 
+    different att, you could face StaleElementException which can cause you 10, 15 mins to debug
+  - Cannot use with the dynamic elements
