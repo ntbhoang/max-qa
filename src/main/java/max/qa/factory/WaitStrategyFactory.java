@@ -11,25 +11,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class WaitStrategyFactory {
+public final class WaitStrategyFactory {
 
-    private static WebDriverWait wait;
-    private static WebElement element;
-
-    static {
-        wait = new WebDriverWait(DriverManager.getWebDriver(),
-                                Duration.ofSeconds(Constants.getPageLoadTimeout()));
-    }
+    private WaitStrategyFactory(){}
 
     public static WebElement perform(WaitStrategy strategy, By by){
+        WebElement element = null;
         if (strategy == WaitStrategy.CLICKABLE){
-            element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            element = new WebDriverWait(DriverManager.getWebDriver(),
+                    Duration.ofSeconds(Constants.getPageLoadTimeout()))
+                    .until(ExpectedConditions.elementToBeClickable(by));
         }
         else if (strategy == WaitStrategy.PRESENCE){
-            element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
+            element = new WebDriverWait(DriverManager.getWebDriver(),
+                    Duration.ofSeconds(Constants.getPageLoadTimeout()))
+                    .until(ExpectedConditions.presenceOfElementLocated(by));
         }
         else if (strategy == WaitStrategy.VISIBLE) {
-            element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            element = new WebDriverWait(DriverManager.getWebDriver(),
+                    Duration.ofSeconds(Constants.getPageLoadTimeout()))
+                    .until(ExpectedConditions.visibilityOfElementLocated(by));
         }
         else if (strategy == WaitStrategy.NONE){
             element = DriverManager.getWebDriver().findElement(by);

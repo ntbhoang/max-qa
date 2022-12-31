@@ -11,13 +11,12 @@ public class BaseTest {
 
     protected BaseTest(){}
 
-    @BeforeTest
+    @BeforeMethod
     protected void setUp(){
         Driver.initDriver();
     }
 
-
-    @AfterTest
+    @AfterMethod
     protected void tearDown() throws IOException {
         Driver.quitDriver();
     }

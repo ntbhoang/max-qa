@@ -1,32 +1,37 @@
 package max.qa.listeners;
 
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import lombok.SneakyThrows;
+import max.qa.reports.ExtentManager;
+import max.qa.reports.ExtentTestManager;
+import org.testng.*;
 
-public class TestListener implements ITestListener {
-    @Override
-    public void onTestStart(ITestResult result) {
-        ITestListener.super.onTestStart(result);
-    }
+public final class TestListener implements ITestListener, ISuiteListener{
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("Test passed");
+        System.out.println(result.getName() + " is Passed.");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
+        System.out.println(result.getName() + " is Failed.");
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        System.out.println(result.getName() + " is Skipped.");
 
     }
 
     @Override
-    public void onStart(ITestContext context) {
-        ITestListener.super.onStart(context);
+    public void onStart(ISuite suite) {
+        ExtentManager.initReporter();
     }
 
+    @SneakyThrows
     @Override
-    public void onFinish(ITestContext context) {
-        ITestListener.super.onFinish(context);
+    public void onFinish(ISuite suite) {
+        ExtentManager.flushReporter();
+        ExtentTestManager.unload();
     }
 }

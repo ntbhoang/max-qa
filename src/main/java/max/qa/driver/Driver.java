@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import max.qa.enums.Time;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 import java.util.Objects;
@@ -20,7 +21,7 @@ import java.util.Objects;
  *
  * <pre>
  * <b>
- * <a href="https://www.youtube.com/channel/UC6PTXUHb6j4Oxf0ccdRI11A">Testing Mini Bytes Youtube channel</a>
+ *
  * </b>
  * </pre>
  *
@@ -36,27 +37,27 @@ public class Driver {
     }
 
     public static void initDriver(){
-        if(Objects.isNull(DriverManager.getWebDriver())){
-            synchronized (Driver.class){
-                if (Objects.isNull(DriverManager.getWebDriver())){
-                    WebDriverManager.chromedriver().setup();
-                    DriverManager.setWebDriver(new ChromeDriver());
-                }
-            }
+        System.out.println("Before init, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
+        if (Objects.isNull(DriverManager.getWebDriver())){
+            WebDriverManager.chromedriver().setup();
+            DriverManager.setWebDriver(new ChromeDriver());
         }
+        System.out.println("After init, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
         browserConfigurations();
     }
 
     public static void quitDriver(){
+        System.out.println("Before quit, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
         if(Objects.nonNull(DriverManager.getWebDriver())){
             DriverManager.getWebDriver().quit();
             DriverManager.unload();
         }
+        System.out.println("After quit, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
     }
 
     private static void browserConfigurations(){
-        DriverManager.getWebDriver().manage().window().maximize();
         DriverManager.getWebDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.PAGE_LOAD_TIME_OUT.getValue()));
         DriverManager.getWebDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.IMPLICIT_WAIT_TIMEOUT.getValue()));
+        DriverManager.getWebDriver().manage().window().maximize();
     }
 }

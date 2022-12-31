@@ -13,11 +13,11 @@ public class CartWebElements {
 
     public CartWebElements(){}
 
-    protected By quantity = By.cssSelector(".cart_quantity");
-    protected By inventoryName = By.cssSelector(".inventory_item_name");
-    protected By price = By.cssSelector(".inventory_item_price");
-    protected By checkoutButton = By.cssSelector("#checkout");
-    protected By continueButton = By.cssSelector("#continue");
+    protected By quantity           = By.cssSelector(".cart_quantity");
+    protected By inventoryName      = By.cssSelector(".inventory_item_name");
+    protected By price              = By.cssSelector(".inventory_item_price");
+    protected By checkoutButton     = By.cssSelector("#checkout");
+    protected By continueButton     = By.cssSelector("#continue");
 
 
     public By getCartElement(String name){
