@@ -31,7 +31,7 @@ public final class ExtentTestManager {
             extentTestThreadLocal.set(testRef);
     }
 
-    public static ExtentTest getTest(){
+    public static ExtentTest getExtentTest(){
         return extentTestThreadLocal.get();
     }
 

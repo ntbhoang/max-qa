@@ -1,0 +1,11 @@
+1- 
+2- Why we need DataProvider when we can use loop?
+  - Because the total test runs when using loop is always 1
+  - Imagine if 1 of your test fails during executing the loop, the whole test terminated - and you do not know what is 
+    the reason of the failure.
+3- Return datatype is not always Object[][]
+4- How to use DataProvider
+5- How to use DataProvider for multiple test methods
+6- Important notes to understand when using DataProvider
+7- DataProvider with excel and HashMap to reduce the parameter to the test method
+8- "data-provider-thread-count" is used to control the number of threads run when using dataProvider

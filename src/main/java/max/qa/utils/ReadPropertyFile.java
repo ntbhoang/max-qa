@@ -1,19 +1,20 @@
 package max.qa.utils;
 
+import max.qa.constants.Constants;
+import max.qa.enums.Configuration;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ReadPropertyFile {
 
-    private static String pwd = System.getProperty("user.dir");
-
     private static Properties properties;
 
     static {
         properties = new Properties();
         try (FileInputStream fis = new FileInputStream(
-                pwd + "/src/test/resources/config.properties")) {
+                Constants.getConfigFilePath())) {
             properties.load(fis);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -22,7 +23,7 @@ public class ReadPropertyFile {
 
     private ReadPropertyFile() {}
 
-    public static String get(Enum key){
+    public static String get(Configuration key){
         return properties.getProperty(key.toString());
     }
 }

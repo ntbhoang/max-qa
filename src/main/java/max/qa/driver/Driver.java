@@ -2,11 +2,13 @@ package max.qa.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import max.qa.enums.Time;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -39,11 +41,12 @@ public class Driver {
     public static void initDriver(){
         System.out.println("Before init, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
         if (Objects.isNull(DriverManager.getWebDriver())){
+            ChromeOptions chromeOptions = browserOptionsConfig();
             WebDriverManager.chromedriver().setup();
-            DriverManager.setWebDriver(new ChromeDriver());
+            DriverManager.setWebDriver(new ChromeDriver(chromeOptions));
         }
         System.out.println("After init, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
-        browserConfigurations();
+        browserConfig();
     }
 
     public static void quitDriver(){
@@ -55,9 +58,21 @@ public class Driver {
         System.out.println("After quit, driver is:  " + "`" + DriverManager.getWebDriver() + "`" );
     }
 
-    private static void browserConfigurations(){
+    private static void browserConfig(){
         DriverManager.getWebDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Time.PAGE_LOAD_TIME_OUT.getValue()));
         DriverManager.getWebDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(Time.IMPLICIT_WAIT_TIMEOUT.getValue()));
         DriverManager.getWebDriver().manage().window().maximize();
+    }
+
+    private static ChromeOptions browserOptionsConfig(){
+        ChromeOptions chromeOptions = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        chromeOptions.setExperimentalOption("prefs", prefs);
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        return chromeOptions;
     }
 }

@@ -1,0 +1,1 @@
+{"uuid":"263b01c2-c057-4e18-ae1e-9aad8eee27dc","name":"max.qa.BaseTest.setUp","children":["b7400279-966b-4494-96ac-4f89f1c3fbc8"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1672556174565,"stop":1672556183811}],"afters":[],"start":1672556174564,"stop":1672556183811}

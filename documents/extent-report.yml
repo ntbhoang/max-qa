@@ -1,0 +1,9 @@
+1- Create a stand-alone report
+2- Integrating with the framework
+3- Using ThreadLocal to avoid thread safety issues with ExtentTest
+4- Create custom logger for Extent report
+5- Listeners to setup and teardown the report
+6- Hiding the getExtentTest method from the page layer
+7- Dynamic reports
+8- Screenshot as Base64String
+9- Screenshots for passed/failed/skipped tests - control from prop file

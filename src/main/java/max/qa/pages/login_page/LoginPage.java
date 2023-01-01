@@ -3,6 +3,7 @@ package max.qa.pages.login_page;
 import max.qa.enums.WaitStrategy;
 import max.qa.factory.WaitStrategyFactory;
 import max.qa.pages.inventory_page.InventoryPage;
+import max.qa.reports.ExtentTestManager;
 import org.openqa.selenium.WebElement;
 
 
@@ -16,25 +17,23 @@ public final class LoginPage{
     public LoginPage enterUserName(String userName){
         WebElement element = WaitStrategyFactory.perform(WaitStrategy.PRESENCE,
                 this.elements.userNameTextBox);
-        //ExtentTestManager.getTest().log(Status.INFO, "Enter value for userNameTextBox");
         element.clear();
         element.sendKeys(userName);
-
+        ExtentTestManager.getExtentTest().pass("`" + userName + "`" +" is entered into the passwordTextBox.");
         return this;
     }
     public LoginPage enterPassword(String password){
         WebElement element = WaitStrategyFactory.perform(WaitStrategy.PRESENCE,
                 this.elements.passwordTextBox);
-        //ExtentTestManager.getTest().log(Status.INFO, "Enter value for passwordTextBox");
         element.clear();
         element.sendKeys(password);
-
+        ExtentTestManager.getExtentTest().pass("`" + password + "`" +" is entered into the passwordTextBox.");
         return this;
     }
 
     public InventoryPage click(){
-        //ExtentTestManager.getTest().log(Status.INFO, "Click on continue button");
         WaitStrategyFactory.perform(WaitStrategy.CLICKABLE, this.elements.loginButton).click();
+        ExtentTestManager.getExtentTest().pass("Clicked on the `continue` button.");
        return new InventoryPage();
     }
 

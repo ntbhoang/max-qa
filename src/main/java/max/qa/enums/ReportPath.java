@@ -2,7 +2,7 @@ package max.qa.enums;
 
 public enum ReportPath {
 
-    EXTENT_PATH("extent-reports/extent-report.html");
+    EXTENT_PATH("extent-reports/index.html");
 
     private final String value;
 
